@@ -1,6 +1,8 @@
 package exerciciosCollection.set.Ordenacao;
 
-public class Produto {
+import java.util.Comparator;
+
+public class Produto implements Comparable<Produto> {
     //Atributos
     private long cod;
     private String nome; 
@@ -58,5 +60,18 @@ public class Produto {
         return true;
     }
 
+    @Override
+    public int compareTo(Produto p) {
+      return nome.compareToIgnoreCase(p.getNome());
+    }
+
+    class ComparatorPorPreco implements Comparator<Produto>{
+
+        @Override
+        public int compare(Produto p1, Produto p2) {
+            return Double.compare(p1.getPreco(), p2.getPreco());
+
+        }
     
+    }
 }
